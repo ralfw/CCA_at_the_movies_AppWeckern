@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IBimmel.cs" />
+    <Compile Include="ISync.cs" />
+    <Compile Include="IUhr.cs" />
+    <Compile Include="IUI.cs" />
+    <Compile Include="IWecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
