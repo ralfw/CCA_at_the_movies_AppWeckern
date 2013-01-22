@@ -17,6 +17,6 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Aktuelle Uhrzeit:"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="hh:mm:ss" Name="Uhrzeit"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="hh:mm:ss" Name="lblUhrzeit"/>
     </Grid>
 </Window>

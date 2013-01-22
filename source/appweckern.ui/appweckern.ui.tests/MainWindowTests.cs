@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace appweckern.ui.tests
 {
@@ -8,6 +9,7 @@ namespace appweckern.ui.tests
         [Test, Explicit, RequiresSTA]
         public void Show() {
             var sut = new MainWindow();
+            sut.Uhrzeit(DateTime.Now);
             sut.ShowDialog();
         } 
     }
