@@ -16,8 +16,8 @@ namespace appweckern.host
         protected override void OnStartup(StartupEventArgs e)
         {
             // Build
-            IUI ui;
-            IUhr uhr;
+            IUI ui = new appweckern.ui.MainWindow();
+            IUhr uhr = new Uhr();
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
 
             // Bind
@@ -26,7 +26,7 @@ namespace appweckern.host
 
             // Run
             uhr.Start();
-            this.Run((Window)ui);
+            ((Window)ui).ShowDialog();
         }
     }
 }

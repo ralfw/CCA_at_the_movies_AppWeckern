@@ -39,6 +39,7 @@
     <Reference Include="appweckern.contracts">
       <HintPath>..\..\..\bin.contracts\appweckern.contracts.dll</HintPath>
     </Reference>
+    <Reference Include="appweckern.ui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -63,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Sync.cs" />
+    <Compile Include="Uhr.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
