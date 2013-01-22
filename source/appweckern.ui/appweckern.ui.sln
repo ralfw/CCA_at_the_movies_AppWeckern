@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appweckern.ui", "appweckern.ui\appweckern.ui.csproj", "{03228620-4064-4828-8265-28A46478EDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appweckern.ui.tests", "appweckern.ui.tests\appweckern.ui.tests.csproj", "{AB9690F1-164D-4F74-93A5-C859AF4F60EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03228620-4064-4828-8265-28A46478EDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03228620-4064-4828-8265-28A46478EDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03228620-4064-4828-8265-28A46478EDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03228620-4064-4828-8265-28A46478EDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB9690F1-164D-4F74-93A5-C859AF4F60EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB9690F1-164D-4F74-93A5-C859AF4F60EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB9690F1-164D-4F74-93A5-C859AF4F60EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB9690F1-164D-4F74-93A5-C859AF4F60EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
