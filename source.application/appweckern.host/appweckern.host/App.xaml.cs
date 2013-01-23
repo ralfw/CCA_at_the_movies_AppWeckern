@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
 using appweckern.contracts;
+using appweckern.uhr;
 
 namespace appweckern.host
 {
@@ -16,7 +13,7 @@ namespace appweckern.host
         protected override void OnStartup(StartupEventArgs e)
         {
             // Build
-            IUI ui = new appweckern.ui.MainWindow();
+            IUI ui = new ui.MainWindow();
             IUhr uhr = new Uhr();
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
 

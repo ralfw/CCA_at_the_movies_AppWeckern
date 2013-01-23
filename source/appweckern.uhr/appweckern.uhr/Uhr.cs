@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using appweckern.contracts;
 
-namespace appweckern.host
+namespace appweckern.uhr
 {
     public class Uhr : IUhr
     {
