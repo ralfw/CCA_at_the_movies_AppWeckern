@@ -15,8 +15,21 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
-        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Aktuelle Uhrzeit:"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="hh:mm:ss" Name="lblUhrzeit"/>
+        <!-- Zeile 1 -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Weckzeit:" FontSize="16"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="txtWeckzeit"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="Start" FontSize="16" Name="btnStart" />
+
+        <!-- Zeile 2 -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ruhezeit:" FontSize="16"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="txtRuhezeit"/>
+
+        <!-- Zeile 3 -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Aktuelle Uhrzeit:" FontSize="16"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="hh:mm:ss" Name="lblUhrzeit" FontSize="16"/>
+
+        <!-- Zeile 4 -->
+        <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Restzeit bis zum Wecken:" FontSize="16"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="hh:mm:ss" Name="lblRestzeit" FontSize="16"/>
     </Grid>
 </Window>
