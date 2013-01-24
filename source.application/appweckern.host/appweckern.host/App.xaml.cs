@@ -2,6 +2,7 @@
 using System.Windows;
 using appweckern.contracts;
 using appweckern.uhr;
+using appweckern.wecker;
 
 namespace appweckern.host
 {
@@ -14,12 +15,19 @@ namespace appweckern.host
         {
             // Build
             IUI ui = new ui.MainWindow();
+            IWecker wecker = new Wecker();
             IUhr uhr = new Uhr();
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
+            ISync<TimeSpan> syncRestzeit = new Sync<TimeSpan>();
 
             // Bind
+            ui.Weckzeit_geändert += wecker.Starten;
+            wecker.Restzeit += syncRestzeit.Process;
+            syncRestzeit.Result += ui.Restzeit;
+
             uhr.Zeitzeichen += syncUhrzeit.Process;
             syncUhrzeit.Result += ui.Uhrzeit;
+            uhr.Zeitzeichen += wecker.Zeitzeichen;
 
             // Run
             uhr.Start();

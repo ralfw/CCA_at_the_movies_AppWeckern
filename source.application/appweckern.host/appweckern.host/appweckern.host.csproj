@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="appweckern.uhr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="appweckern.ui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="appweckern.wecker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
