@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appweckern.bimmel", "appweckern.bimmel\appweckern.bimmel.csproj", "{7A5C5CE3-321C-4FCD-9E10-290965D9CA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appweckern.bimmel.tests", "appweckern.bimmel.tests\appweckern.bimmel.tests.csproj", "{F1BDD35C-892A-4548-8B67-0366A24330AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A5C5CE3-321C-4FCD-9E10-290965D9CA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5C5CE3-321C-4FCD-9E10-290965D9CA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5C5CE3-321C-4FCD-9E10-290965D9CA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5C5CE3-321C-4FCD-9E10-290965D9CA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1BDD35C-892A-4548-8B67-0366A24330AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1BDD35C-892A-4548-8B67-0366A24330AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1BDD35C-892A-4548-8B67-0366A24330AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1BDD35C-892A-4548-8B67-0366A24330AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
