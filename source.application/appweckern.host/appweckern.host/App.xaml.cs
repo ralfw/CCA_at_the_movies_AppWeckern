@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using appweckern.bimmel;
 using appweckern.contracts;
 using appweckern.uhr;
 using appweckern.wecker;
@@ -15,7 +16,8 @@ namespace appweckern.host
         {
             // Build
             IUI ui = new ui.MainWindow();
-            IWecker wecker = new Wecker();
+            IBimmel bimmel = new Bimmel();
+            IWecker wecker = new Wecker(bimmel);
             IUhr uhr = new Uhr();
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
             ISync<TimeSpan> syncRestzeit = new Sync<TimeSpan>();
@@ -24,6 +26,7 @@ namespace appweckern.host
             ui.Weckzeit_geändert += wecker.Starten;
             wecker.Restzeit += syncRestzeit.Process;
             syncRestzeit.Result += ui.Restzeit;
+            wecker.Abgelaufen += ui.Abgelaufen;
 
             uhr.Zeitzeichen += syncUhrzeit.Process;
             syncUhrzeit.Result += ui.Uhrzeit;

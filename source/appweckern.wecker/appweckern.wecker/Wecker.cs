@@ -7,10 +7,16 @@ namespace appweckern.wecker
     {
         private DateTime? _weckzeit;
 
-        public Wecker()
+        public Wecker(IBimmel bimmel)
         {
             _starten += _ => Weckzeit_bestimmen(_, weckzeit => _weckzeit = weckzeit);
-            _zeitzeichen += uhrzeit => Restzeit_berechnen(_weckzeit, uhrzeit, _ => Restzeit(_));
+            _zeitzeichen += uhrzeit => Restzeit_berechnen(_weckzeit, uhrzeit, _ => { 
+                                            Restzeit(_);
+                                            Ist_Weckzeit_erreicht(_, () => {
+                                                bimmel.Läuten();
+                                                Abgelaufen();
+                                            });
+                                       });
         }
 
 
@@ -45,6 +51,12 @@ namespace appweckern.wecker
             if (!weckzeit.HasValue) return;
 
             on_restzeit(weckzeit.Value.Subtract(uhrzeit));
+        }
+
+        public void Ist_Weckzeit_erreicht(TimeSpan restzeit, Action on_abgelaufen)
+        {
+            if (((int)restzeit.TotalSeconds) == 0)
+                on_abgelaufen();
         }
     }
 }

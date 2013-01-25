@@ -12,7 +12,7 @@ namespace appweckern.wecker.tests
         [Test]
         public void Restzeit_berechnen()
         {
-            var sut = new Wecker();
+            var sut = new Wecker(null);
 
             var result = new TimeSpan(0);
             sut.Restzeit += _ => result = _;
@@ -26,7 +26,7 @@ namespace appweckern.wecker.tests
         [Test]
         public void Ohne_Weckzeit_keine_Restzeit()
         {
-            var sut = new Wecker();
+            var sut = new Wecker(null);
 
             var result = new TimeSpan(0);
             sut.Restzeit += _ => result = _;
@@ -34,6 +34,25 @@ namespace appweckern.wecker.tests
             sut.Zeitzeichen(new DateTime(2013, 1, 24, 9, 58, 0));
 
             Assert.AreEqual(new TimeSpan(0), result);
+        }
+
+        [Test]
+        public void Weckzeit_noch_nicht_erreicht()
+        {
+            var sut = new Wecker(null);
+
+            sut.Ist_Weckzeit_erreicht(new TimeSpan(0,0,10,42), Assert.Fail);
+        }
+
+        [Test]
+        public void Weckzeit_erreicht()
+        {
+            var sut = new Wecker(null);
+
+            var abgelaufen = false;
+            sut.Ist_Weckzeit_erreicht(new DateTime(2000,1,1,10,0,0).Subtract(new DateTime(2000,1,1,10,0,0)), () => abgelaufen=true);
+
+            Assert.IsTrue(abgelaufen);
         }
     }
 }

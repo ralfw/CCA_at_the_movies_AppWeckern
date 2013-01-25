@@ -52,7 +52,7 @@ namespace appweckern.ui
         }
 
         public void Abgelaufen() {
-            throw new NotImplementedException();
+            // im Augenblick noch nichts tun, wenn der Wecker abgelaufen ist
         }
 
         public void Gestoppt() {
