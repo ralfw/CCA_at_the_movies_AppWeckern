@@ -31,7 +31,13 @@ namespace appweckern.wecker
 
         private void Weckzeit_bestimmen(Tuple<DateTime, TimeSpan> weckzeit_oder_ruhezeit, Action<DateTime> on_weckzeit)
         {
-            on_weckzeit(weckzeit_oder_ruhezeit.Item1);
+            if (weckzeit_oder_ruhezeit.Item1 != new DateTime())
+                on_weckzeit(weckzeit_oder_ruhezeit.Item1);
+            else
+                if (weckzeit_oder_ruhezeit.Item2 != new TimeSpan()) {
+                    var weckzeit = DateTime.Now.Add(weckzeit_oder_ruhezeit.Item2);
+                    on_weckzeit(weckzeit);
+                }
         }
 
         private void Restzeit_berechnen(DateTime? weckzeit, DateTime uhrzeit, Action<TimeSpan> on_restzeit)
