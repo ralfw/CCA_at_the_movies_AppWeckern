@@ -59,7 +59,7 @@ namespace appweckern.ui
         }
 
         public void Gestoppt() {
-            throw new NotImplementedException();
+            lblRestzeit.Visibility = Visibility.Hidden;
         }
 
         public event Action<Tuple<DateTime, TimeSpan>> Weckzeit_geändert;

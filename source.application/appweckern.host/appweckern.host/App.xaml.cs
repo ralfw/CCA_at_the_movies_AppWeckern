@@ -22,6 +22,7 @@ namespace appweckern.host
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
             ISync<TimeSpan> syncRestzeit = new Sync<TimeSpan>();
             ISync syncAbgelaufen = new Sync();
+            ISync syncGestoppt = new Sync();
 
             // Bind
             ui.Weckzeit_geändert += wecker.Starten;
@@ -29,6 +30,10 @@ namespace appweckern.host
             syncRestzeit.Result += ui.Restzeit;
             wecker.Abgelaufen += syncAbgelaufen.Process;
             syncAbgelaufen.Result += ui.Abgelaufen;
+
+            ui.Stopp_gedrückt += wecker.Stoppen;
+            wecker.Gestoppt += syncGestoppt.Process;
+            syncGestoppt.Result += ui.Gestoppt;
 
             uhr.Zeitzeichen += syncUhrzeit.Process;
             syncUhrzeit.Result += ui.Uhrzeit;
