@@ -5,22 +5,22 @@ namespace appweckern.wecker
 {
     public class Wecker : IWecker
     {
-        private DateTime? _weckzeit;
-
         public Wecker(IBimmel bimmel)
         {
-            _starten += _ => Weckzeit_bestimmen(_, weckzeit => _weckzeit = weckzeit);
-            _zeitzeichen += uhrzeit => Restzeit_berechnen(_weckzeit, uhrzeit, _ => 
-                                        Ist_Weckzeit_erreicht(_, 
+            var rechner = new Restzeitrechner();
+
+            _starten += _ => Weckzeit_bestimmen(_, rechner.Starten);
+            _zeitzeichen += rechner.Zeitzeichen;
+            rechner.Restzeit += _ => Ist_Weckzeit_erreicht(_, 
                                             Restzeit, () => {
-                                                bimmel.Läuten();
-                                                Abgelaufen();
-                                            }));
-            _stoppen += () =>
-                {
-                    _gestoppt = true;
-                    Gestoppt();
-                };
+
+                                            bimmel.Läuten();
+                                            rechner.Stoppen(); 
+                                            Abgelaufen();
+                                        });
+            rechner.Gestoppt += () => Gestoppt();
+
+            _stoppen += rechner.Stoppen;
         }
 
 
@@ -50,19 +50,9 @@ namespace appweckern.wecker
                 }
         }
 
-        private void Restzeit_berechnen(DateTime? weckzeit, DateTime uhrzeit, Action<TimeSpan> on_restzeit)
-        {
-            if (!weckzeit.HasValue) return;
 
-            on_restzeit(weckzeit.Value.Subtract(uhrzeit));
-        }
-
-
-        private bool _gestoppt = false;
         public void Ist_Weckzeit_erreicht(TimeSpan restzeit, Action<TimeSpan> on_restzeit, Action on_abgelaufen)
         {
-            if (_gestoppt) return;
-
             if (((int)restzeit.TotalSeconds) == 0)
                 on_abgelaufen();
             on_restzeit(restzeit);

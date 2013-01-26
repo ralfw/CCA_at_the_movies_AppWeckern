@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Restzeitrechner.cs" />
     <Compile Include="Wecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
