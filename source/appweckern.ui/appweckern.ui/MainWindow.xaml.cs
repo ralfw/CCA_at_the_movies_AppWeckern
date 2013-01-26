@@ -36,6 +36,7 @@ namespace appweckern.ui
                 return;
             }
 
+            lblRestzeit.Visibility = Visibility.Visible;
             Weckzeit_geändert(new Tuple<DateTime, TimeSpan>(weckzeit, ruhezeit));
         }
 
@@ -51,8 +52,9 @@ namespace appweckern.ui
             lblRestzeit.Text = restzeit.ToString();
         }
 
-        public void Abgelaufen() {
-            // im Augenblick noch nichts tun, wenn der Wecker abgelaufen ist
+        public void Abgelaufen()
+        {
+            lblRestzeit.Visibility = Visibility.Hidden;
         }
 
         public void Gestoppt() {

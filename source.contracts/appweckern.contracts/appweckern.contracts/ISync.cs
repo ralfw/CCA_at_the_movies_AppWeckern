@@ -8,4 +8,11 @@ namespace appweckern.contracts
 
         event Action<T> Result;
     }
+
+    public interface ISync
+    {
+        void Process();
+
+        event Action Result;
+    }
 }

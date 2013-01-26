@@ -30,6 +30,6 @@
 
         <!-- Zeile 4 -->
         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Restzeit bis zum Wecken:" FontSize="16"/>
-        <TextBlock Grid.Row="3" Grid.Column="2" Text="hh:mm:ss" Name="lblRestzeit" FontSize="16"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="hh:mm:ss" Name="lblRestzeit" FontSize="16" Visibility="Hidden"/>
     </Grid>
 </Window>

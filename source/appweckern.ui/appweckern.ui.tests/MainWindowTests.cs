@@ -15,7 +15,7 @@ namespace appweckern.ui.tests
         }
 
         [Test, Explicit, RequiresSTA]
-        public void Restrzeit_anzeigen() {
+        public void Restzeit_anzeigen() {
             var sut = new MainWindow();
             sut.Restzeit(new TimeSpan(1, 2, 3));
             sut.ShowDialog();

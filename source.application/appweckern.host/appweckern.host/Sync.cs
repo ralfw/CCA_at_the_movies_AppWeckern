@@ -20,4 +20,22 @@ namespace appweckern.host
 
         public event Action<T> Result;
     }
+
+
+    public class Sync : ISync
+    {
+        private readonly SynchronizationContext _syncCtx;
+
+        public Sync()
+        {
+            _syncCtx = SynchronizationContext.Current;
+        }
+
+        public void Process()
+        {
+            _syncCtx.Send(_ => Result(), null);
+        }
+
+        public event Action Result;
+    }
 }

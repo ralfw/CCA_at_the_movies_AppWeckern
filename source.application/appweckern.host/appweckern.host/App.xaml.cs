@@ -21,12 +21,14 @@ namespace appweckern.host
             IUhr uhr = new Uhr();
             ISync<DateTime> syncUhrzeit = new Sync<DateTime>();
             ISync<TimeSpan> syncRestzeit = new Sync<TimeSpan>();
+            ISync syncAbgelaufen = new Sync();
 
             // Bind
             ui.Weckzeit_geändert += wecker.Starten;
             wecker.Restzeit += syncRestzeit.Process;
             syncRestzeit.Result += ui.Restzeit;
-            wecker.Abgelaufen += ui.Abgelaufen;
+            wecker.Abgelaufen += syncAbgelaufen.Process;
+            syncAbgelaufen.Result += ui.Abgelaufen;
 
             uhr.Zeitzeichen += syncUhrzeit.Process;
             syncUhrzeit.Result += ui.Uhrzeit;
