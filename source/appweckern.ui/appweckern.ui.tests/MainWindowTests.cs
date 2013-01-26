@@ -27,5 +27,13 @@ namespace appweckern.ui.tests
             sut.Weckzeit_geändert += e => MessageBox.Show("Weckzeit = " + e.Item1.ToLongTimeString() + ", Ruheziet = " + e.Item2.ToString());
             sut.ShowDialog();
         }
+
+        [Test, Explicit, RequiresSTA]
+        public void Stop_gedrückt()
+        {
+            var sut = new MainWindow();
+            sut.Stopp_gedrückt += () => MessageBox.Show("Stopp gedrück!");
+            sut.ShowDialog();
+        }
     }
 }

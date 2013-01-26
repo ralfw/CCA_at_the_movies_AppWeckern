@@ -9,6 +9,7 @@ namespace appweckern.ui
         public MainWindow() {
             InitializeComponent();
             btnStart.Click += (o, e) => WeckzeitGeändert();
+            btnStop.Click += (o, e) => Stopp_gedrückt();
         }
 
         private void WeckzeitGeändert() {
