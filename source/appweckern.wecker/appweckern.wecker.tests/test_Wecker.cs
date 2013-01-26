@@ -41,7 +41,7 @@ namespace appweckern.wecker.tests
         {
             var sut = new Wecker(null);
 
-            sut.Ist_Weckzeit_erreicht(new TimeSpan(0,0,10,42), Assert.Fail);
+            sut.Ist_Weckzeit_erreicht(new TimeSpan(0,0,10,42), _ => {}, Assert.Fail);
         }
 
         [Test]
@@ -50,9 +50,32 @@ namespace appweckern.wecker.tests
             var sut = new Wecker(null);
 
             var abgelaufen = false;
-            sut.Ist_Weckzeit_erreicht(new DateTime(2000,1,1,10,0,0).Subtract(new DateTime(2000,1,1,10,0,0)), () => abgelaufen=true);
+            sut.Ist_Weckzeit_erreicht(new DateTime(2000,1,1,10,0,0).Subtract(new DateTime(2000,1,1,10,0,0)), _ => {}, () => abgelaufen=true);
 
             Assert.IsTrue(abgelaufen);
+        }
+
+        [Test]
+        public void Gestoppter_Wecker_meldet_Stopp()
+        {
+            var sut = new Wecker(null);
+
+            var result = false;
+            sut.Gestoppt += () => result = true;
+
+            sut.Stoppen();
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void Gestoppter_Wecker_meldet_keine_Restzeit()
+        {
+            var sut = new Wecker(null);
+            sut.Gestoppt += () => { };
+
+            sut.Stoppen();
+            sut.Ist_Weckzeit_erreicht(new TimeSpan(0), _ => Assert.Fail(), Assert.Fail);
         }
     }
 }

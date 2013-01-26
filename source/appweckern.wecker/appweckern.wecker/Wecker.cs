@@ -10,13 +10,17 @@ namespace appweckern.wecker
         public Wecker(IBimmel bimmel)
         {
             _starten += _ => Weckzeit_bestimmen(_, weckzeit => _weckzeit = weckzeit);
-            _zeitzeichen += uhrzeit => Restzeit_berechnen(_weckzeit, uhrzeit, _ => { 
-                                            Restzeit(_);
-                                            Ist_Weckzeit_erreicht(_, () => {
+            _zeitzeichen += uhrzeit => Restzeit_berechnen(_weckzeit, uhrzeit, _ => 
+                                        Ist_Weckzeit_erreicht(_, 
+                                            Restzeit, () => {
                                                 bimmel.Läuten();
                                                 Abgelaufen();
-                                            });
-                                       });
+                                            }));
+            _stoppen += () =>
+                {
+                    _gestoppt = true;
+                    Gestoppt();
+                };
         }
 
 
@@ -26,7 +30,7 @@ namespace appweckern.wecker
         private readonly Action<DateTime> _zeitzeichen;
         public void Zeitzeichen(DateTime zeitzeichen) { _zeitzeichen(zeitzeichen); }
 
-        private Action _stoppen;
+        private readonly Action _stoppen;
         public void Stoppen() { _stoppen(); }
 
 
@@ -53,10 +57,15 @@ namespace appweckern.wecker
             on_restzeit(weckzeit.Value.Subtract(uhrzeit));
         }
 
-        public void Ist_Weckzeit_erreicht(TimeSpan restzeit, Action on_abgelaufen)
+
+        private bool _gestoppt = false;
+        public void Ist_Weckzeit_erreicht(TimeSpan restzeit, Action<TimeSpan> on_restzeit, Action on_abgelaufen)
         {
+            if (_gestoppt) return;
+
             if (((int)restzeit.TotalSeconds) == 0)
                 on_abgelaufen();
+            on_restzeit(restzeit);
         }
     }
 }
